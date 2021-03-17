@@ -113,10 +113,3 @@ USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Ge
 LOG_LEVEL = 'DEBUG'
 TEST = False
 DOWNLOAD_DELAY = 0.04
-
-IMPORTANT_SEARCH_KEYWORDS = {
-    "天官赐福", "天官赐福漫画", "天官漫画", "天官", "社交温度", "灰灰",
-}
-SEARCH_KEYWORDS = IMPORTANT_SEARCH_KEYWORDS
-
-TEST = True

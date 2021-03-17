@@ -49,18 +49,24 @@ class WeiboSpider(scrapy.Spider):
         # 'DELTAFETCH_TABLE_NAME': 'base',
         'ITEM_PIPELINES': {
             'policy_crawler_common.scrapy_extensions.pipelines.MysqlExportPipeline': 300,
+            'crawlab.pipelines.CrawlabMongoPipeline': 888,
+            # 'scrapy_redis.pipelines.RedisPipeline': 400,
         },
-        "MySQL_EXPORT_ENABLED": True,
+        "MySQL_EXPORT_ENABLED": False,
         'COOKIES_ENABLED': False,
-        #  'SCHEDULER': "scrapy_redis.scheduler.Scheduler",
-        #  'SCHEDULER_QUEUE_CLASS': 'scrapy_redis.queue.SpiderQueue',
-        #  'SCHEDULER_PERSIST': True,
-        #  'SCHEDULER_IDLE_BEFORE_CLOSE': 30,
+
+        # "SCHEDULER": "scrapy_redis.scheduler.Scheduler",
+        # "DUPEFILTER_CLASS": "scrapy_redis.dupefilter.RFPDupeFilter",
+        # "SCHEDULER_PERSIST": False,
+        # "SCHEDULER_IDLE_BEFORE_CLOSE": 30,
     }
 
     def start_requests(self):
         self.TEST = self.settings["TEST"]
-        search_keywords = self.settings["SEARCH_KEYWORDS"]
+        search_keywords = {
+            "天官赐福", "天官赐福漫画", "天官漫画", "天官", "社交温度", "灰灰",
+        }
+
         if self.TEST is True:
             search_keywords = {search_keywords.pop(), search_keywords.pop()}
         for keyword in search_keywords:

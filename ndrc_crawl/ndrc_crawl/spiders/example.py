@@ -26,7 +26,7 @@ class NdrcSpider(scrapy.Spider):
         'PROXY_ENABLED': True,
 
         'SPIDER_MIDDLEWARES': {
-            'ndrc_crawl.d.DeltaFetchMiddleware': 901,
+            'policy_crawler_common.scrapy_extensions.middlewares.deltafetch.DeltaFetchMiddleware': 901,
         },
         'DELTAFETCH_ENABLED': True,
         'DELTAFETCH_KEY_NAME': 'raw_key',
@@ -117,9 +117,8 @@ class NdrcSpider(scrapy.Spider):
 
     def parse_detail(self, response):
         detail_id = response.meta["detail_id"]
-        print(detail_id)
-        # yield itemify(raw_key=detail_id, url=response.url, category="detail",
-                      # source="ndrc", html=response.body)
+        yield itemify(raw_key=detail_id, url=response.url, category="detail",
+                      source="ndrc", html=response.body)
 
 
 

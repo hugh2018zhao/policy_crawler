@@ -31,7 +31,7 @@ class ExampleSpider(scrapy.Spider):
         'DELTAFETCH_KEY_NAME': 'raw_key',
         'ITEM_PIPELINES': {
             'policy_crawler_common.scrapy_extensions.pipelines.MysqlExportPipeline': 300,
-            'crawlab.pipelines.CrawlabMongoPipeline': 888,
+            'crawlab.pipelines.CrawlabMongoPipeline': 888,  # 该pipe会自动将结果存入crawlab中指定的数据源
             # 'scrapy_redis.pipelines.RedisPipeline': 400,
         },
         "MySQL_EXPORT_ENABLED": False,

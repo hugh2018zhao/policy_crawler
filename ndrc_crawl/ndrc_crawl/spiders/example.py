@@ -117,8 +117,11 @@ class NdrcSpider(scrapy.Spider):
 
     def parse_detail(self, response):
         detail_id = response.meta["detail_id"]
+
+        # 清洗部分代码省略
+        washed_data = {"title": ""}
         yield itemify(raw_key=detail_id, url=response.url, category="detail",
-                      source="ndrc", html=response.body)
+                      source="ndrc", html=str(response.body), washed_data=washed_data)
 
 
 

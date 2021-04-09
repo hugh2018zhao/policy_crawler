@@ -120,8 +120,8 @@ class NdrcSpider(scrapy.Spider):
 
         # 清洗部分代码省略
         washed_data = {"title": ""}
-        yield itemify(raw_key=detail_id, url=response.url, category="detail",
-                      source="ndrc", html=str(response.body), washed_data=washed_data)
+        yield itemify(raw_key=detail_id, url=str(response.url), category="detail",
+                      source="ndrc", html=response.text, washed_data=washed_data)
 
 
 
